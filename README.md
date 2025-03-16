@@ -1,4 +1,10 @@
-# Zindi Challenges - Microsoft Location Mention Recognition
+# NLP
+
+Welcome to my NLP Portfolio, showcasing a collection of projects that leverage the power of computer vision to solve real-world challenges.
+
+# Projects
+
+**1. Microsoft Location Mention Recognition**
 
 This repository contains the notebooks for the challenges I have participated in on Zindi. Still in progress
 
