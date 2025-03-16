@@ -1,17 +1,23 @@
-# NLP
+# NLP Projects
+
+# Overview
 
 Welcome to my NLP Portfolio, showcasing a collection of projects that leverage the power of computer vision to solve real-world challenges.
 
-# Projects
+## Projects
 
-**1. Microsoft Location Mention Recognition**
+**1. Microsoft Location Mention Recognition (LMR)**
 
-This repository contains the notebooks for the challenges I have participated in on Zindi. Still in progress
+Overview: Identifying locations from tweets.
 
-## Challenge Overview
+Aim: To develop a Location-Based Monitoring and Response (LMR) system to enhance disaster response initiatives, such as managing floods and fires.
 
-### Microsoft Location Mention Recognition
-- **location-mention-recognition (5)-Copy1 - Copy.ipynb**:
-The notebook in this repository focuses on solving the Microsoft Location Mention Recognition challenge, where the objective is to identify location mentions within tweets.
-- **ltrymodel1-Copy1.ipynb**: The notebook focuses on model inference on test data and submission
+Technologies: Python, Pytorch, and transformers.
 
+**2. NLP-Skin Disease**
+
+Overview: Identifying symptoms and diseases based on user input.
+
+Aim: To develop a chatbot that informs users about the most probable diseases and symptoms based on their conversation, aiding in early awareness and decision-making.
+
+Technologies: Python, Pytorch, sentence transformers, and chromadb.
