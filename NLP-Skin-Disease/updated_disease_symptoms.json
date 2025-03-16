@@ -1,0 +1,731 @@
+[
+    {
+        "disease": "Acne",
+        "symptoms": [
+            "Pimples",
+            "Blackheads",
+            "Whiteheads",
+            "Painful cysts",
+            "Nodules"
+        ],
+        "etiology": "Caused by clogged hair follicles due to oil, dead skin cells, and bacteria."
+    },
+    {
+        "disease": "Eczema (Atopic Dermatitis)",
+        "symptoms": [
+            "Itchy skin",
+            "Red patches",
+            "Thickened skin",
+            "Dryness",
+            "Cracking",
+            "Bleeding"
+        ],
+        "etiology": "Exact cause unknown, but linked to a combination of genetic and environmental factors."
+    },
+    {
+        "disease": "Psoriasis",
+        "symptoms": [
+            "Red patches",
+            "Silvery scales",
+            "Dry skin",
+            "Itching",
+            "Burning sensation",
+            "Thickened nails"
+        ],
+        "etiology": "Caused by an overactive immune system leading to rapid skin cell turnover."
+    },
+    {
+        "disease": "Rosacea",
+        "symptoms": [
+            "Facial redness",
+            "Visible blood vessels",
+            "Swollen red bumps",
+            "Pustules",
+            "Dry, burning eyes"
+        ],
+        "etiology": "Exact cause unknown, but factors include genetics, immune system, and environmental triggers."
+    },
+    {
+        "disease": "Hives (Urticaria)",
+        "symptoms": [
+            "Red welts",
+            "Itching",
+            "Swelling",
+            "Sudden appearance and disappearance"
+        ],
+        "etiology": "Triggered by allergic reactions, infections, stress, or physical stimuli."
+    },
+    {
+        "disease": "Vitiligo",
+        "symptoms": [
+            "Loss of skin color",
+            "White patches",
+            "Premature graying of hair",
+            "Loss of pigment in the inner ear or eye"
+        ],
+        "etiology": "Autoimmune disorder where the immune system attacks pigment cells."
+    },
+    {
+        "disease": "Melasma",
+        "symptoms": [
+            "Brown patches",
+            "Facial discoloration",
+            "Darkening of existing freckles or moles"
+        ],
+        "etiology": "Caused by sun exposure, hormonal changes, and genetic predisposition."
+    },
+    {
+        "disease": "Contact Dermatitis",
+        "symptoms": [
+            "Red rash",
+            "Itching",
+            "Blisters",
+            "Burning sensation",
+            "Stinging"
+        ],
+        "etiology": "Caused by direct contact with irritants or allergens."
+    },
+    {
+        "disease": "Seborrheic Dermatitis",
+        "symptoms": [
+            "Red skin",
+            "Scaly patches",
+            "Dandruff",
+            "Greasy or oily skin",
+            "Itching behind ears, eyebrows, or on chest"
+        ],
+        "etiology": "Linked to a combination of genetic, environmental, and fungal factors."
+    },
+    {
+        "disease": "Lichen Planus",
+        "symptoms": [
+            "Purplish bumps",
+            "Itching",
+            "Blisters",
+            "Lacy white network on the tongue"
+        ],
+        "etiology": "Exact cause unknown, but may involve immune system dysfunction."
+    },
+    {
+        "disease": "Herpes Simplex",
+        "symptoms": [
+            "Painful blisters",
+            "Sores on mouth or genitals",
+            "Fever",
+            "Tingling or burning sensation before outbreak"
+        ],
+        "etiology": "Caused by herpes simplex virus (HSV-1 or HSV-2)."
+    },
+    {
+        "disease": "Herpes Zoster (Shingles)",
+        "symptoms": [
+            "Painful rash",
+            "Blisters",
+            "Itching",
+            "Fever, fatigue, headache"
+        ],
+        "etiology": "Reactivation of the varicella-zoster virus (chickenpox virus)."
+    },
+    {
+        "disease": "Warts",
+        "symptoms": [
+            "Small growths",
+            "Rough texture",
+            "Flesh-colored",
+            "Black dots (blood vessels)"
+        ],
+        "etiology": "Caused by human papillomavirus (HPV) infection."
+    },
+    {
+        "disease": "Molluscum Contagiosum",
+        "symptoms": [
+            "Flesh-colored bumps",
+            "Dimpling",
+            "Itching",
+            "Clusters of bumps"
+        ],
+        "etiology": "Caused by a poxvirus (molluscum contagiosum virus)."
+    },
+    {
+        "disease": "Scabies",
+        "symptoms": [
+            "Intense itching",
+            "Rash",
+            "Blisters",
+            "Burrow tracks",
+            "Worse at night"
+        ],
+        "etiology": "Caused by infestation with the Sarcoptes scabiei mite."
+    },
+    {
+        "disease": "Impetigo",
+        "symptoms": [
+            "Red sores",
+            "Honey-colored crusts",
+            "Itching",
+            "Spreading easily through contact"
+        ],
+        "etiology": "Caused by bacterial infection, typically Staphylococcus aureus or Streptococcus pyogenes."
+    },
+    {
+        "disease": "Cellulitis",
+        "symptoms": [
+            "Red skin",
+            "Swelling",
+            "Pain",
+            "Warmth",
+            "Rapid progression"
+        ],
+        "etiology": "Bacterial infection, usually caused by Staphylococcus or Streptococcus species."
+    },
+    {
+        "disease": "Tinea (Ringworm)",
+        "symptoms": [
+            "Ring-shaped rash",
+            "Red skin",
+            "Itching",
+            "Scaly patches, hair loss (scalp ringworm)"
+        ],
+        "etiology": "Fungal infection caused by dermatophytes."
+    },
+    {
+        "disease": "Tinea Pedis (Athlete's Foot)",
+        "symptoms": [
+            "Scaly rash",
+            "Itching",
+            "Burning sensation",
+            "Cracked skin between toes"
+        ],
+        "etiology": "Fungal infection caused by dermatophytes."
+    },
+    {
+        "disease": "Tinea Versicolor",
+        "symptoms": [
+            "Discolored patches",
+            "Mild itching",
+            "Scaling",
+            "Patches may become lighter or darker with sun exposure"
+        ],
+        "etiology": "Fungal infection caused by Malassezia species."
+    },
+    {
+        "disease": "Tinea Corporis",
+        "symptoms": [
+            "Ring-shaped rash",
+            "Red skin",
+            "Itching"
+        ],
+        "etiology": "Fungal infection caused by dermatophytes."
+    },
+    {
+        "disease": "Cutaneous Candidiasis",
+        "symptoms": [
+            "Red rash",
+            "Itching",
+            "Swelling",
+            "Satellite pustules (small pustules around a larger one)"
+        ],
+        "etiology": "Fungal infection caused by Candida species."
+    },
+    {
+        "disease": "Folliculitis",
+        "symptoms": [
+            "Pus-filled blisters",
+            "Itching",
+            "Red bumps",
+            "Tenderness"
+        ],
+        "etiology": "Inflammation of hair follicles due to bacterial, fungal, or viral infection."
+    },
+    {
+        "disease": "Boils (Furunculosis)",
+        "symptoms": [
+            "Red lump",
+            "Pus drainage",
+            "Pain",
+            "Fever"
+        ],
+        "etiology": "Bacterial infection of hair follicles, usually caused by Staphylococcus aureus."
+    },
+    {
+        "disease": "Carbuncle",
+        "symptoms": [
+            "Cluster of boils",
+            "Red skin",
+            "Pus drainage",
+            "Pain",
+            "Fever"
+        ],
+        "etiology": "Cluster of boils caused by bacterial infection, usually Staphylococcus aureus."
+    },
+    {
+        "disease": "Lupus Erythematosus",
+        "symptoms": [
+            "Facial butterfly rash",
+            "Skin lesions",
+            "Joint pain",
+            "Fatigue, fever, weight loss"
+        ],
+        "etiology": "Autoimmune disease where the immune system attacks healthy tissues."
+    },
+    {
+        "disease": "Dermatomyositis",
+        "symptoms": [
+            "Red rash",
+            "Muscle weakness",
+            "Scaly skin",
+            "Light sensitivity"
+        ],
+        "etiology": "Inflammatory disease causing muscle weakness and skin rash, possibly autoimmune."
+    },
+    {
+        "disease": "Bullous Pemphigoid",
+        "symptoms": [
+            "Large blisters",
+            "Red skin",
+            "Itching",
+            "Blisters that rupture easily"
+        ],
+        "etiology": "Autoimmune disorder causing large, fluid-filled blisters."
+    },
+    {
+        "disease": "Pemphigus Vulgaris",
+        "symptoms": [
+            "Painful blisters",
+            "Skin erosion",
+            "Oozing",
+            "Nikolsky's sign (removal of the top layer of skin with gentle rubbing)"
+        ],
+        "etiology": "Autoimmune disorder causing blisters and erosions on the skin and mucous membranes."
+    },
+    {
+        "disease": "Dermatitis Herpetiformis",
+        "symptoms": [
+            "Itchy blisters",
+            "Red patches",
+            "Burning sensation",
+            "Grouped on elbows, knees, buttocks, and lower back"
+        ],
+        "etiology": "Autoimmune blistering disorder associated with gluten sensitivity."
+    },
+    {
+        "disease": "Nummular Dermatitis",
+        "symptoms": [
+            "Coin-shaped spots",
+            "Red skin",
+            "Itching",
+            "Dry patches",
+            "Crusting"
+        ],
+        "etiology": "Exact cause unknown, but linked to skin inflammation."
+    },
+    {
+        "disease": "Stasis Dermatitis",
+        "symptoms": [
+            "Swollen skin",
+            "Red patches",
+            "Itching",
+            "Leg ulcers"
+        ],
+        "etiology": "Caused by poor blood circulation in the lower legs."
+    },
+    {
+        "disease": "Dyshidrotic Eczema",
+        "symptoms": [
+            "Small blisters",
+            "Itching",
+            "Red skin",
+            "Cracked skin",
+            "Burning sensation",
+            "Deep cracks that may bleed"
+        ],
+        "etiology": "Exact cause unknown, but linked to allergies, stress, and moist environments."
+    },
+    {
+        "disease": "Alopecia Areata",
+        "symptoms": [
+            "Smooth bald patches",
+            "Hair loss",
+            "Nail changes (pitting, dents, discoloration, ridging)"
+        ],
+        "etiology": "Autoimmune disorder causing hair loss."
+    },
+    {
+        "disease": "Keloids",
+        "symptoms": [
+            "Thick scar",
+            "Skin-colored or red",
+            "Itching",
+            "Raised and extends beyond the original wound"
+        ],
+        "etiology": "Overgrowth of scar tissue following skin injury."
+    },
+    {
+        "disease": "Hypertrophic Scars",
+        "symptoms": [
+            "Thick scar",
+            "Red or dark",
+            "Itching",
+            "Raised but stays within the original wound"
+        ],
+        "etiology": "Thickened scars that stay within the boundary of the original wound."
+    },
+    {
+        "disease": "Basal Cell Carcinoma",
+        "symptoms": [
+            "Pearly bump",
+            "Flat scar-like area",
+            "Bleeding",
+            "Broken blood vessels",
+            "Waxy appearance"
+        ],
+        "etiology": "Skin cancer caused by prolonged exposure to ultraviolet (UV) radiation."
+    },
+    {
+        "disease": "Squamous Cell Carcinoma",
+        "symptoms": [
+            "Red patch",
+            "Open sore",
+            "Elevated growth",
+            "Scaly or crusted surface"
+        ],
+        "etiology": "Skin cancer caused by prolonged exposure to ultraviolet (UV) radiation."
+    },
+    {
+        "disease": "Melanoma",
+        "symptoms": [
+            "A mole that changes in color, size or feel or that bleeds",
+            "A mole that changes in color, size or feel or that bleeds",
+            "A small lesion with an irregular border (red, white, blue or blue-black)",
+            "Dark lesions on palms, soles, fingertips, toes, or mucous membranes"
+        ],
+        "etiology": "Skin cancer caused by mutations in melanocytes, often due to UV radiation."
+    },
+    {
+        "disease": "Actinic Keratosis",
+        "symptoms": [
+            "Scaly patch",
+            "Pink, red, or brown",
+            "Itching or burning",
+            "Rough, sandpaper-like texture"
+        ],
+        "etiology": "Precancerous skin lesion caused by prolonged UV exposure."
+    },
+    {
+        "disease": "Keratosis Pilaris",
+        "symptoms": [
+            "Small bumps",
+            "Dry skin",
+            "Itching",
+            "Rough texture, often on arms, thighs, buttocks, or cheeks"
+        ],
+        "etiology": "Caused by a buildup of keratin blocking hair follicles."
+    },
+    {
+        "disease": "Ichthyosis Vulgaris",
+        "symptoms": [
+            "Dry skin",
+            "Scaly skin",
+            "Thickened skin",
+            "Flaking",
+            "Fish-like scales"
+        ],
+        "etiology": "Genetic disorder causing dry, scaly skin."
+    },
+    {
+        "disease": "Pityriasis Rosea",
+        "symptoms": [
+            "Oval patch (herald patch)",
+            "Smaller patches (Christmas tree pattern)",
+            "Itching",
+            "Pinkish-red color"
+        ],
+        "etiology": "Exact cause unknown, but may be linked to viral infections."
+    },
+    {
+        "disease": "Pityriasis Alba",
+        "symptoms": [
+            "Light patches",
+            "Dry skin",
+            "Mild itching",
+            "Rough texture, commonly on face, cheeks, or upper arms"
+        ],
+        "etiology": "Unknown cause, often linked to dry skin."
+    },
+    {
+        "disease": "Granuloma Annulare",
+        "symptoms": [
+            "Ring-shaped bumps",
+            "Red or skin-colored",
+            "Itching",
+            "Smooth surface"
+        ],
+        "etiology": "Exact cause unknown, but may be linked to immune system or skin injury."
+    },
+    {
+        "disease": "Porphyria Cutanea Tarda",
+        "symptoms": [
+            "Blisters",
+            "Fragile skin",
+            "Hyperpigmentation",
+            "Sensitivity to sunlight",
+            "facial hair growth in women"
+        ],
+        "etiology": "Caused by a deficiency of the enzyme uroporphyrinogen decarboxylase."
+    },
+    {
+        "disease": "Henoch-Sch\u00f6nlein Purpura",
+        "symptoms": [
+            "Purple spots",
+            "Joint pain",
+            "Abdominal pain",
+            "Bloody stools"
+        ],
+        "etiology": "Autoimmune disorder causing inflammation of blood vessels."
+    },
+    {
+        "disease": "Erythema Nodosum",
+        "symptoms": [
+            "Red lumps",
+            "Swelling",
+            "Fever",
+            "Tenderness, particularly in the shins"
+        ],
+        "etiology": "Inflammatory condition often triggered by infections, medications, or other diseases."
+    },
+    {
+        "disease": "Erythema Multiforme",
+        "symptoms": [
+            "Target-like lesions",
+            "Blisters",
+            "Swelling",
+            "Burning sensation in mouth or eyes"
+        ],
+        "etiology": "Hypersensitivity reaction usually triggered by infections or medications."
+    },
+    {
+        "disease": "Stevens-Johnson Syndrome",
+        "symptoms": [
+            "Painful rash",
+            "Blisters",
+            "Skin peeling",
+            "Fever, burning eyes, mouth sores"
+        ],
+        "etiology": "Severe reaction to medications or infections causing skin and mucous membrane damage."
+    },
+    {
+        "disease": "Toxic Epidermal Necrolysis",
+        "symptoms": [
+            "Skin peeling",
+            "Painful skin",
+            "Blisters",
+            "Fever, chills, malaise"
+        ],
+        "etiology": "Severe reaction to medications causing extensive skin detachment and damage."
+    },
+    {
+        "disease": "Necrotizing Fasciitis",
+        "symptoms": [
+            "Red skin",
+            "Swelling",
+            "Severe pain",
+            "Fever, rapid progression of symptoms"
+        ],
+        "etiology": "Rapidly progressing bacterial infection causing tissue death."
+    },
+    {
+        "disease": "Pyoderma Gangrenosum",
+        "symptoms": [
+            "Painful sores",
+            "Purulent discharge",
+            "Ulceration",
+            "Violaceous borders"
+        ],
+        "etiology": "Rare, inflammatory condition often associated with systemic diseases."
+    },
+    {
+        "disease": "Sarcoidosis",
+        "symptoms": [
+            "Red lumps",
+            "Swollen lymph nodes",
+            "Joint pain",
+            "Fatigue, cough, shortness of breath"
+        ],
+        "etiology": "Inflammatory disease causing granulomas, possibly autoimmune."
+    },
+    {
+        "disease": "Lichen Sclerosus",
+        "symptoms": [
+            "White patches",
+            "Itching",
+            "Painful skin",
+            "Thinning of the skin, scarring in severe cases"
+        ],
+        "etiology": "Chronic condition causing skin thinning and scarring, possibly autoimmune."
+    },
+    {
+        "disease": "Cutaneous T-Cell Lymphoma",
+        "symptoms": [
+            "Red patches",
+            "Thickened skin",
+            "Swollen lymph nodes",
+            "Itching, scaly patches"
+        ],
+        "etiology": "Type of cancer that starts in T-cells in the skin."
+    },
+    {
+        "disease": "Morbus Hailey-Hailey",
+        "symptoms": [
+            "Blisters",
+            "Cracked skin",
+            "Itching",
+            "Redness in the groin, armpits, and under the breasts"
+        ],
+        "etiology": "Genetic disorder causing blisters and erosions in skin folds."
+    },
+    {
+        "disease": "Pellagra",
+        "symptoms": [
+            "Flaky skin",
+            "Sores (on tongue, mouth, and skin exposed to sunlight)",
+            "Diarrhea",
+            "Dementia (severe cases)"
+        ],
+        "etiology": "Caused by a deficiency of niacin (vitamin B3)."
+    },
+    {
+        "disease": "Scurvy",
+        "symptoms": [
+            "Bleeding gums",
+            "Bruising",
+            "Dry skin",
+            "Fatigue, weakness, joint pain (severe cases)"
+        ],
+        "etiology": "Caused by a deficiency of vitamin C."
+    },
+    {
+        "disease": "Beh\u00e7et's Disease",
+        "symptoms": [
+            "Mouth sores",
+            "Genital sores",
+            "Red eyes",
+            "Headaches, joint pain, nervous system problems (severe cases)"
+        ],
+        "etiology": "Autoimmune disorder causing blood vessel inflammation."
+    },
+    {
+        "disease": "Merkel cell carcinoma",
+        "symptoms": [
+            "Painless lump",
+            "Firm lump",
+            "Shiny lump",
+            "Red lump",
+            "Purple lump",
+            "Swollen lymph nodes"
+        ],
+        "etiology": "Rare and aggressive skin cancer, often linked to a virus (Merkel cell polyomavirus)."
+    },
+    {
+        "disease": "Chickenpox",
+        "symptoms": [
+            "Itchy rash",
+            "Blister-like rash",
+            "Fever",
+            "Tiredness",
+            "Loss of appetite",
+            "Blisters",
+            "Pink spots"
+        ],
+        "etiology": "Viral infection caused by the varicella-zoster virus."
+    },
+    {
+        "disease": "Cold Sores",
+        "symptoms": [
+            "Painful blisters",
+            "Fluid-filled blisters",
+            "Blisters around lips",
+            "Clustered blisters",
+            "Tingling",
+            "Burning sensation"
+        ],
+        "etiology": "Caused by herpes simplex virus (HSV-1)."
+    },
+    {
+        "disease": "Measles",
+        "symptoms": [
+            "Fever",
+            "Dry cough",
+            "Runny nose",
+            "Sore throat",
+            "Inflamed eyes(Conjunctivitis)",
+            "White spots in mouth",
+            "Red rash",
+            "Blotchy rash"
+        ],
+        "etiology": "Viral infection caused by the measles virus."
+    },
+    {
+        "disease": "Rubella",
+        "symptoms": [
+            "Mild fever",
+            "Headache",
+            "Runny nose",
+            "Red eyes",
+            "Pink rash",
+            "Swollen lymph nodes"
+        ],
+        "etiology": "Viral infection caused by the rubella virus."
+    },
+    {
+        "disease": "Xeroderma Pigmentosum",
+        "symptoms": [
+            "Dry skin",
+            "Thin skin",
+            "Pigmentation changes",
+            "Sensitivity to sunlight",
+            "Freckling",
+            "Sunburn",
+            "Red lines",
+            "Blisters"
+        ],
+        "etiology": "Genetic disorder causing extreme sensitivity to UV light."
+    },
+    {
+        "disease": "Ichthyosis",
+        "symptoms": [
+            "Dry skin",
+            "Scaly skin",
+            "Thickened skin",
+            "Cracking skin",
+            "Flaking skin",
+            "Itching"
+        ],
+        "etiology": "Group of genetic disorders causing dry, scaly skin."
+    },
+    {
+        "disease": "Neurofibromatosis type 1 (NF1)",
+        "symptoms": [
+            "Bone deformities",
+            "Learning disabilities",
+            "Flat brown spots",
+            "Cafe-au-lait spots",
+            "Lisch nodules",
+            "Neurofibromas",
+            "Freckling"
+        ],
+        "etiology": "Genetic disorder causing tumors to form on nerve tissue."
+    },
+    {
+        "disease": "Albinism",
+        "symptoms": [
+            "Pale skin",
+            "Light-colored hair",
+            "Light-colored eyes",
+            "Light sensitivity",
+            "Lazy eye",
+            "Strabismus",
+            "Vision problems"
+        ],
+        "etiology": "Genetic disorder affecting melanin production."
+    }
+]
