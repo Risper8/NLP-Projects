@@ -1,0 +1,734 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claims Assistant -- test client</title>
+<style>
+  :root {
+    --navy: #0f172a;
+    --navy-soft: #1e293b;
+    --accent: #2563eb;
+    --accent-soft: #eff6ff;
+    --accent-border: #bfdbfe;
+    --bg: #eef1f6;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --text-secondary: #475569;
+    --muted: #94a3b8;
+    --online: #22c55e;
+    --danger: #dc2626;
+    --danger-soft: #fef2f2;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 16px;
+    line-height: 1.55;
+    background: var(--bg);
+    background-image: radial-gradient(circle at 15% 10%, #dbe4f3 0%, transparent 45%),
+                       radial-gradient(circle at 85% 90%, #dfe7f5 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--text);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  #app {
+    width: 100%;
+    max-width: 580px;
+    background: var(--surface);
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 16px 40px -12px rgba(15,23,42,0.18);
+    overflow: hidden;
+  }
+
+  /* -- header -- */
+  header {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-soft) 100%);
+    color: white;
+    padding: 1.1rem 1.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .brand-icon {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-icon svg { width: 20px; height: 20px; }
+
+  .brand-text { flex: 1; min-width: 0; }
+
+  .brand-text .title {
+    font-weight: 600;
+    font-size: 1.02rem;
+    letter-spacing: 0.1px;
+  }
+
+  .brand-text .subtitle {
+    font-weight: 400;
+    font-size: 0.78rem;
+    color: #cbd5e1;
+    margin-top: 0.15rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .status-pill {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    color: #cbd5e1;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--online);
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.25);
+  }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* -- identify screen -- */
+  #identify-panel {
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  #identify-panel .identify-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #identify-panel .identify-icon svg { width: 24px; height: 24px; color: var(--accent); }
+
+  #identify-panel h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.35rem;
+  }
+
+  #identify-panel p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0 0 1.4rem;
+  }
+
+  #identify-panel .field-row {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  #identify-panel input {
+    flex: 1;
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background: #f8fafc;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  }
+
+  #identify-panel input:focus { background: white; }
+
+  #identify-panel button, #composer button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+  }
+
+  #identify-panel button {
+    padding: 0.7rem 1.3rem;
+    margin-top: 0.9rem;
+    width: 100%;
+  }
+
+  #identify-panel button:hover, #composer button:hover:not(:disabled) { background: #1d4ed8; }
+  #identify-panel button:active, #composer button:active:not(:disabled) { transform: scale(0.97); }
+  #identify-panel button:disabled, #composer button:disabled { opacity: 0.5; cursor: default; }
+
+  .helper-text {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 1rem;
+  }
+
+  /* -- chat screen -- */
+  #log {
+    height: 440px;
+    overflow-y: auto;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    background:
+      linear-gradient(var(--surface) 0%, var(--surface) 100%);
+  }
+
+  #log::-webkit-scrollbar { width: 8px; }
+  #log::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 999px; }
+  #log::-webkit-scrollbar-track { background: transparent; }
+
+  @keyframes rise-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .turn {
+    display: flex;
+    gap: 0.6rem;
+    max-width: 86%;
+    animation: rise-in 0.2s ease-out;
+  }
+
+  .turn.user { align-self: flex-end; flex-direction: row-reverse; }
+  .turn.assistant { align-self: flex-start; }
+
+  .avatar {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .avatar svg { width: 16px; height: 16px; }
+
+  .turn.user .avatar { background: var(--accent); }
+  .turn.user .avatar svg { color: white; }
+  .turn.assistant .avatar { background: var(--navy-soft); }
+  .turn.assistant .avatar svg { color: #cbd5e1; }
+
+  .bubble-group { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+  .turn.user .bubble-group { align-items: flex-end; }
+
+  .bubble {
+    padding: 0.65rem 0.9rem;
+    border-radius: 14px;
+    word-wrap: break-word;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    letter-spacing: 0.1px;
+  }
+
+  .turn.user .bubble {
+    background: var(--accent);
+    color: white;
+    border-bottom-right-radius: 4px;
+    /* User bubbles are plain textContent (never markdown-rendered), so
+       whitespace/newlines the user actually typed must be preserved
+       literally. */
+    white-space: pre-wrap;
+  }
+
+  .turn.assistant .bubble {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+    /* Assistant bubbles hold rendered HTML (see renderMarkdown), where
+       line breaks are already real <br>/<p> elements -- pre-wrap here
+       would also preserve the insignificant whitespace *between* marked's
+       output tags, which desyncs <table> row/column layout in some
+       browsers. */
+    white-space: normal;
+  }
+
+  .timestamp {
+    font-size: 0.7rem;
+    color: var(--muted);
+    padding: 0 0.2rem;
+  }
+
+  .status-line {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--muted);
+    padding: 0.3rem 0.9rem;
+    border-left: 2px solid var(--border);
+  }
+
+  .status-line .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--muted);
+    animation: status-pulse 1.2s ease-in-out infinite;
+  }
+
+  @keyframes status-pulse {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 1; }
+  }
+
+  /* -- typing indicator -- */
+  .typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.7rem 0.95rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    border-bottom-left-radius: 4px;
+    width: fit-content;
+  }
+
+  .typing-indicator span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--muted);
+    animation: typing-bounce 1.3s infinite ease-in-out;
+  }
+
+  .typing-indicator span:nth-child(2) { animation-delay: 0.15s; }
+  .typing-indicator span:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  .notice {
+    align-self: center;
+    color: var(--text-secondary);
+    font-size: 0.74rem;
+    text-align: center;
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
+
+  /* -- composer -- */
+  #composer {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.6rem;
+    padding: 0.9rem 1.1rem;
+    border-top: 1px solid var(--border);
+    background: #fafbfc;
+  }
+
+  #message {
+    flex: 1;
+    resize: none;
+    max-height: 6.5rem;
+    padding: 0.65rem 0.95rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    font-size: 0.93rem;
+    font-family: inherit;
+    line-height: 1.4;
+    background: white;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  #message:focus, #identify-panel input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  #composer button {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #composer button svg { width: 17px; height: 17px; }
+
+  .error-banner {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    color: #991b1b;
+    background: var(--danger-soft);
+    border-top: 1px solid #fecaca;
+    font-size: 0.82rem;
+    padding: 0.55rem 1.1rem;
+  }
+
+  .error-banner.visible { display: flex; }
+
+  #identify-error {
+    color: #991b1b;
+    font-size: 0.82rem;
+    margin-top: 0.6rem;
+    min-height: 1.1rem;
+  }
+
+  .bubble table {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    width: max-content;
+    max-width: 100%;
+    margin: 0.5rem 0;
+    font-size: 0.88rem;
+  }
+  .bubble th, .bubble td {
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.6rem;
+    text-align: left;
+  }
+  .bubble th {
+    background: var(--accent-soft);
+    font-weight: 600;
+  }
+  .bubble p { margin: 0 0 0.5rem; }
+  .bubble p:last-child { margin-bottom: 0; }
+  .bubble ul, .bubble ol { margin: 0.3rem 0 0.5rem; padding-left: 1.3rem; }
+  .bubble li { margin: 0.15rem 0; }
+  .bubble strong { color: var(--navy); }
+  .bubble code {
+    background: var(--accent-soft);
+    border-radius: 3px;
+    padding: 0.1em 0.35em;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <header>
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/>
+        <path d="M9.5 12l1.8 1.8L15 10"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <div class="title">Claims Assistant</div>
+      <div class="subtitle">ZEP-RE reinsurance claims portal</div>
+    </div>
+    <div class="status-pill"><span class="status-dot"></span>Online</div>
+  </header>
+
+  <div id="identify" class="screen active">
+    <div id="identify-panel">
+      <div class="identify-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16v16H4z" opacity="0"/>
+          <path d="M3 7l9 6 9-6"/>
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+        </svg>
+      </div>
+      <h2>Welcome</h2>
+      <p>Enter your email to start a session with the claims assistant.</p>
+      <div class="field-row">
+        <input type="email" id="email" placeholder="you@example.com" onkeydown="if(event.key==='Enter')startSession()">
+      </div>
+      <button id="start-btn" onclick="startSession()">Start session</button>
+      <div id="identify-error"></div>
+      <div class="helper-text">Your email determines which claims you can see.</div>
+    </div>
+  </div>
+
+  <div id="chat" class="screen">
+    <div id="log"></div>
+    <div id="composer">
+      <textarea id="message" rows="1" placeholder="Ask about a claim..."></textarea>
+      <button id="send-btn" onclick="sendMessage()" title="Send" aria-label="Send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+    <div class="error-banner" id="chat-error"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script>
+function renderMarkdown(text) {
+  const html = marked.parse(text || '', {breaks: true});
+  return DOMPurify.sanitize(html);
+}
+
+let sessionId = null;
+
+const ICONS = {
+  user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+  assistant: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>',
+};
+
+function formatTime() {
+  return new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+}
+
+function scrollLog() {
+  const log = document.getElementById('log');
+  log.scrollTop = log.scrollHeight;
+}
+
+function appendTyping(container) {
+  const el = document.createElement('div');
+  el.className = 'typing-indicator';
+  el.innerHTML = '<span></span><span></span><span></span>';
+  container.appendChild(el);
+  return el;
+}
+
+function appendNotice(text) {
+  const log = document.getElementById('log');
+  const div = document.createElement('div');
+  div.className = 'notice';
+  div.textContent = text;
+  log.appendChild(div);
+  scrollLog();
+}
+
+function appendTurn(role, text) {
+  const log = document.getElementById('log');
+
+  const turn = document.createElement('div');
+  turn.className = 'turn ' + role;
+
+  const avatar = document.createElement('div');
+  avatar.className = 'avatar';
+  avatar.innerHTML = role === 'user' ? ICONS.user : ICONS.assistant;
+
+  const group = document.createElement('div');
+  group.className = 'bubble-group';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.textContent = text;
+  group.appendChild(bubble);
+
+  const time = document.createElement('div');
+  time.className = 'timestamp';
+  time.textContent = formatTime();
+  group.appendChild(time);
+
+  turn.appendChild(avatar);
+  turn.appendChild(group);
+  log.appendChild(turn);
+  scrollLog();
+
+  return {turn, group, bubble, time};
+}
+
+function autosizeMessage() {
+  const el = document.getElementById('message');
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 104) + 'px';
+}
+
+async function startSession() {
+  const email = document.getElementById('email').value.trim();
+  const errorEl = document.getElementById('identify-error');
+  const btn = document.getElementById('start-btn');
+  if (!email) return;
+
+  errorEl.textContent = '';
+  btn.disabled = true;
+  btn.textContent = 'Connecting...';
+
+  try {
+    const r = await fetch('/sessions', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email_address: email}),
+    });
+    const data = await r.json();
+    if (!r.ok) {
+      errorEl.textContent = data.detail || 'Could not start session.';
+      btn.disabled = false;
+      btn.textContent = 'Start session';
+      return;
+    }
+    sessionId = data.session_id;
+    document.getElementById('identify').classList.remove('active');
+    document.getElementById('chat').classList.add('active');
+    appendNotice('Session started for ' + data.domain + (data.is_admin ? ' -- admin' : ''));
+    document.getElementById('message').focus();
+  } catch (e) {
+    errorEl.textContent = 'Request failed: ' + e;
+    btn.disabled = false;
+    btn.textContent = 'Start session';
+  }
+}
+
+async function sendMessage() {
+  const input = document.getElementById('message');
+  const sendBtn = document.getElementById('send-btn');
+  const errorEl = document.getElementById('chat-error');
+  const text = input.value.trim();
+  if (!text || !sessionId) return;
+
+  input.value = '';
+  autosizeMessage();
+  errorEl.classList.remove('visible');
+  errorEl.textContent = '';
+  sendBtn.disabled = true;
+
+  appendTurn('user', text);
+
+  const assistant = appendTurn('assistant', '');
+  assistant.bubble.remove();
+  assistant.time.remove();
+  const typingEl = appendTyping(assistant.group);
+  scrollLog();
+
+  function clearTyping() {
+    if (typingEl.parentNode) typingEl.remove();
+  }
+
+  function stampTime() {
+    if (!assistant.time.parentNode) {
+      assistant.time.textContent = formatTime();
+      assistant.group.appendChild(assistant.time);
+    }
+  }
+
+  let statusEl = null;
+  let bubbleEl = null;
+  let contentText = '';
+
+  try {
+    const response = await fetch('/chat/stream', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({session_id: sessionId, message: text}),
+    });
+
+    if (!response.ok || !response.body) {
+      clearTyping();
+      errorEl.textContent = 'Chat request failed (' + response.status + ').';
+      errorEl.classList.add('visible');
+      return;
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    while (true) {
+      const {done, value} = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, {stream: true});
+
+      let sepIndex;
+      while ((sepIndex = buffer.indexOf('\n\n')) !== -1) {
+        const frame = buffer.slice(0, sepIndex);
+        buffer = buffer.slice(sepIndex + 2);
+        if (!frame.startsWith('data: ')) continue;
+
+        const event = JSON.parse(frame.slice(6));
+
+        if (event.type === 'status') {
+          clearTyping();
+          if (!statusEl) {
+            statusEl = document.createElement('div');
+            statusEl.className = 'status-line';
+            statusEl.innerHTML = '<span class="dot"></span><span class="status-text"></span>';
+            assistant.group.appendChild(statusEl);
+          }
+          statusEl.querySelector('.status-text').textContent = event.text;
+          scrollLog();
+        } else if (event.type === 'content') {
+          clearTyping();
+          if (statusEl) { statusEl.remove(); statusEl = null; }
+          if (!bubbleEl) {
+            bubbleEl = document.createElement('div');
+            bubbleEl.className = 'bubble';
+            assistant.group.appendChild(bubbleEl);
+          }
+          contentText += event.text;
+          bubbleEl.innerHTML = renderMarkdown(contentText);
+          stampTime();
+          scrollLog();
+        } else if (event.type === 'final') {
+          clearTyping();
+          if (statusEl) { statusEl.remove(); statusEl = null; }
+          if (!bubbleEl) {
+            bubbleEl = document.createElement('div');
+            bubbleEl.className = 'bubble';
+            assistant.group.appendChild(bubbleEl);
+          }
+          bubbleEl.innerHTML = renderMarkdown(event.final_response || '(no response)');
+          stampTime();
+          scrollLog();
+        }
+      }
+    }
+  } catch (e) {
+    clearTyping();
+    errorEl.textContent = 'Request failed: ' + e;
+    errorEl.classList.add('visible');
+  } finally {
+    sendBtn.disabled = false;
+    input.focus();
+  }
+}
+
+document.getElementById('message').addEventListener('input', autosizeMessage);
+document.getElementById('message').addEventListener('keydown', function(event) {
+  if (event.key === 'Enter' && !event.shiftKey) {
+    event.preventDefault();
+    sendMessage();
+  }
+});
+</script>
+</body>
+</html>
