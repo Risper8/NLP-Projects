@@ -1,4 +1,3 @@
-# graphrag.py
 from __future__ import annotations
 from typing import Any
 from pydantic import BaseModel, Field
@@ -55,32 +54,25 @@ class GraphRAG:
         limit: int = 10,
         depth: int = 2,
     ) -> GraphRAGResult:
-        # Generate query embedding
         query_embedding = await self.embed_query(query)
-        # Semantic/vector retrieval
         seeds = await self.vector_search(
             query_embedding=query_embedding,
             domain=domain,
             limit=limit,
         )
 
-        # Resolve graph entities
         entities = await self.resolve_entities(
             query=query,
             seeds=seeds,
             domain=domain,
         )
 
-
-        # Expand graph around seed entities
         graph = await self.expand_subgraph(
             entities=entities,
             domain=domain,
             depth=depth,
         )
 
-
-        # Build LLM-friendly context
         context = self.build_context(
             query=query,
             seeds=seeds,
@@ -317,11 +309,6 @@ class GraphRAG:
         seeds: list[GraphSeed],
         graph: dict[str, Any],
     ) -> str:
-        """
-        Convert the retrieved graph into concise, grounded
-        context for the response LLM.
-        """
-
         lines = []
 
         lines.append(

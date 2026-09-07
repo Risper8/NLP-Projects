@@ -88,17 +88,6 @@ HAS_PAYMENT), not a claim-level field. A claim with no payment status,
 finance reference, or paid amount recorded has no Payment node at all
 -- there's nothing to report, not a null value on the claim itself.
 
-SETTLEMENT DATE -- NOT TRACKED. No field in this graph records when a
-claim was settled. Do NOT substitute DATE OF LOSS for it -- that is a
-different concept (when the loss occurred, not when it was settled).
-Say plainly this isn't tracked.
-
 STATUS -- claim.status (e.g. "Completed"). See PORTAL STATUS above for
 the related-but-different field.
-
-TYPE OF BUSINESS -- NOT TRACKED. A real, frequently-populated field in
-the source system, but it was never loaded into this graph. Only
-CLASS OF BUSINESS above exists here -- these are NOT interchangeable;
-if asked for type of business, say it isn't tracked, don't answer with
-class of business instead.
 """

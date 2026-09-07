@@ -6,13 +6,6 @@ load_dotenv()
 
 
 class MemoryGraph:
-    """
-    Provides:
-        - Short-term memory
-        - Long-term memory
-        - Reasoning memory
-        - Context retrieval
-    """
 
     def __init__(self, settings, *, embedder=None, extractor=None):
         self.settings = settings

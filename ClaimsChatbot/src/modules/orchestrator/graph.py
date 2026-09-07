@@ -96,10 +96,6 @@ def _emit_status(text: str) -> None:
 
 
 def _build_single_claim_query(original_message: str, confirmed_ref: str) -> str:
-    # Strips every OTHER claim reference out of the original compound
-    # question, leaving the same field-specific intent scoped to just the
-    # one claim the user confirmed -- e.g. "reserve, class and type of
-    # business for X and Y?" -> "reserve, class and type of business for X?"
     other_refs = [r for r in extract_claim_references(original_message) if r != confirmed_ref]
     text = original_message
     for ref in other_refs:
@@ -264,13 +260,6 @@ def build_graph(
         return {"final_response": final_text, "route": route_taken}
 
     async def _resolve_redirect_confirmation(state: AgentState) -> dict | None:
-        # Detects a short "yes"-style reply to our own deterministic
-        # compound-claims redirect, recovers the original multi-claim
-        # question from history, and resolves it straight to the
-        # confirmed claim -- bypassing the agent's own tool selection,
-        # which (measured directly) unreliably falls back to
-        # get_portfolio_summary on a bare "yes" and then fabricates an
-        # answer instead of admitting it never looked up the claim.
         if extract_claim_references(state["user_message"]):
             return None
         if not SHORT_AFFIRMATIVE_PATTERN.match(state["user_message"].strip()):
@@ -337,11 +326,6 @@ def build_graph(
         return {"final_response": final_text, "route": "lookup_claim", "resolved_directly": True}
 
     async def check_compound_claims(state: AgentState) -> dict:
-
-        # Awaited, not fire-and-forget: this node may also fire a second
-        # store right after (the redirect text) -- doing both concurrently
-        # via create_task has been observed to race on message-id
-        # uniqueness in the memory store and silently drop one write.
         await memory.store_short_term(
             session_id=state["session_id"],
             role="user",

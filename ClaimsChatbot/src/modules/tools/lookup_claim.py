@@ -296,10 +296,6 @@ def detect_not_tracked_concept(query: str) -> str | None:
     return None
 
 
-# If a query mentions a NOT_TRACKED concept alongside a real, trackable one
-# (e.g. "reserve, class, and type of business for X"), short-circuiting the
-# whole call would silently drop the real, answerable part too. This checks
-# whether anything else worth looking up is present before doing that.
 TRACKED_FIELD_HINTS_PATTERN = re.compile(
     r"\b(reserve|class of business|settlement|status|insurer|insured|cedant|"
     r"broker|payment|paid|quer(?:y|ies)|process|case|location|date of loss|"

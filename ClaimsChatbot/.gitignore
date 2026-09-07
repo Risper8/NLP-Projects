@@ -25,3 +25,7 @@ Thumbs.db
 # local model/embedding caches, if ever pointed in-repo
 .cache/
 .claude/
+
+# test suite (not included in the published copy)
+tests/
+src/modules/test/
